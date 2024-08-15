@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
+import * as React from "react";
 
-// import { TrendingUp } from "lucide-react"
-import { Label,  PolarGrid, PolarRadiusAxis, RadialBar, RadialBarChart } from "recharts";
+import {
+  Label,
+  Pie,
+  PieChart,
+  PolarRadiusAxis,
+  RadialBar,
+  RadialBarChart,
+} from "recharts";
+
+// Import the correct component from the module
+import { ModeToggle } from "../components/theme-switcher";
+import { ThemeProvider } from "@/components/theme-provider";
 
 import {
   ChartConfig,
@@ -10,7 +21,16 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 
-import { CircleUser, DollarSign, Menu, Package2, Users } from "lucide-react";
+import {
+  CircleUser,
+  DollarSign,
+  Menu,
+  Utensils,
+  Users,
+  LogOut,
+  Settings,
+  User,
+} from "lucide-react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -26,11 +46,9 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-// import { Input } from "@/components/ui/input"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   Table,
@@ -41,9 +59,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+const calToday = [{ month: "january", desktop: 1260, mobile: 570 }];
 const chartData = [
-  { month: "january", desktop: 1260, mobile: 570 },
+  { browser: "chrome", visitors: 275, fill: "var(--color-chrome)" },
   { browser: "safari", visitors: 200, fill: "var(--color-safari)" },
+  { browser: "firefox", visitors: 287, fill: "var(--color-firefox)" },
+  { browser: "edge", visitors: 173, fill: "var(--color-edge)" },
+  { browser: "other", visitors: 190, fill: "var(--color-other)" },
 ];
 const chartConfig = {
   desktop: {
@@ -58,55 +80,59 @@ const chartConfig = {
   visitors: {
     label: "Visitors",
   },
+  chrome: {
+    label: "Chrome",
+    color: "hsl(var(--chart-1))",
+  },
   safari: {
     label: "Safari",
     color: "hsl(var(--chart-2))",
   },
+  firefox: {
+    label: "Firefox",
+    color: "hsl(var(--chart-3))",
+  },
+  edge: {
+    label: "Edge",
+    color: "hsl(var(--chart-4))",
+  },
+  other: {
+    label: "Other",
+    color: "hsl(var(--chart-5))",
+  },
 } satisfies ChartConfig;
 
 export function Home2() {
-
-  const totalVisitors = chartData[0].desktop + chartData[0].mobile;
+  const todayCal = calToday[0].desktop + calToday[0].mobile;
+  const totalVisitors = React.useMemo(() => {
+    return chartData.reduce((acc, curr) => acc + curr.visitors, 0);
+  }, []);
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+      <div className="sticky z-50 top-0 flex h-16 whitespace-nowrap items-center items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-          <Link
-            to="#"
-            className="flex items-center gap-2 text-lg font-semibold md:text-base"
-          >
-            <Package2 className="h-6 w-6" />
+          <Link to="#" className="flex items-center gap-2 text-lg md:text-base">
+            <Utensils className="h-6 w-6" />
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
             to="#"
             className="text-foreground transition-colors hover:text-foreground"
           >
-            Dashboard
+            หน้าหลัก
           </Link>
           <Link
             to="#"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Orders
+            ประวัติการกิน
           </Link>
+
           <Link
             to="#"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Products
-          </Link>
-          <Link
-            to="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Customers
-          </Link>
-          <Link
-            to="#"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Analytics
+            ตั้งค่า
           </Link>
         </nav>
         <Sheet>
@@ -126,51 +152,33 @@ export function Home2() {
                 to="#"
                 className="flex items-center gap-2 text-lg font-semibold"
               >
-                <Package2 className="h-6 w-6" />
+                <Utensils className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
               <Link to="#" className="hover:text-foreground">
-                Dashboard
+                หน้าหลัก
               </Link>
               <Link
                 to="#"
                 className="text-muted-foreground hover:text-foreground"
               >
-                Orders
+                ประวัติการกิน
               </Link>
               <Link
                 to="#"
                 className="text-muted-foreground hover:text-foreground"
               >
-                Products
-              </Link>
-              <Link
-                to="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Customers
-              </Link>
-              <Link
-                to="#"
-                className="text-muted-foreground hover:text-foreground"
-              >
-                Analytics
+                ตั้งค่า
               </Link>
             </nav>
           </SheetContent>
         </Sheet>
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-          <form className="ml-auto flex-1 sm:flex-initial">
-            {/* <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search products..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-              />
-            </div> */}
-          </form>
+          <form className="ml-auto flex-2 sm:flex-initial "></form>
           <DropdownMenu>
+            <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+              <ModeToggle />
+            </ThemeProvider>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
                 <CircleUser className="h-5 w-5" />
@@ -178,16 +186,29 @@ export function Home2() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuItem >
+                <User className="mr-2 h-4 w-4" />
+                <span className="text-foreground">บัญชีของฉัน</span>
+              </DropdownMenuItem>
+              {/* <DropdownMenuLabel>บัญชีของฉัน</DropdownMenuLabel> */}
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Settings className="mr-2 h-4 w-4" />
+                <span className="text-muted-foreground hover:text-foreground">ตั้งค่า</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <Users className="mr-2 h-4 w-4" />
+                <span className="text-muted-foreground hover:text-foreground">แจ้งปัญหา</span>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span className="text-muted-foreground hover:text-foreground">ออกจากระบบ</span>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
-      </header>
+      </div>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-2 md:grid-cols-2 md:gap-8 lg:grid-cols-2">
           <Card x-chunk="dashboard-01-chunk-0">
@@ -203,7 +224,7 @@ export function Home2() {
                 className="mx-auto aspect-square w-full max-w-[250px]"
               >
                 <RadialBarChart
-                  data={chartData}
+                  data={calToday}
                   endAngle={180}
                   innerRadius={80}
                   outerRadius={130}
@@ -231,7 +252,7 @@ export function Home2() {
                                 y={(viewBox.cy || 0) - 16}
                                 className="fill-foreground text-2xl font-bold"
                               >
-                                {totalVisitors.toLocaleString()}
+                                {todayCal.toLocaleString()}
                               </tspan>
                               <tspan
                                 x={viewBox.cx}
@@ -267,15 +288,59 @@ export function Home2() {
           <Card x-chunk="dashboard-01-chunk-1">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Subscriptions
+                โภชนาการวันนี้
               </CardTitle>
               <Users className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">+2350</div>
-              <p className="text-xs text-muted-foreground">
-                +180.1% from last month
-              </p>
+            <CardContent className="flex-1 pb-0">
+              <ChartContainer
+                config={chartConfig}
+                className="mx-auto aspect-square max-h-[250px]"
+              >
+                <PieChart>
+                  <ChartTooltip
+                    cursor={false}
+                    content={<ChartTooltipContent hideLabel />}
+                  />
+                  <Pie
+                    data={chartData}
+                    dataKey="visitors"
+                    nameKey="browser"
+                    innerRadius={60}
+                    strokeWidth={5}
+                  >
+                    <Label
+                      content={({ viewBox }) => {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
+                          return (
+                            <text
+                              x={viewBox.cx}
+                              y={viewBox.cy}
+                              textAnchor="middle"
+                              dominantBaseline="middle"
+                            >
+                              <tspan
+                                x={viewBox.cx}
+                                y={viewBox.cy}
+                                className="fill-foreground text-3xl font-bold"
+                              >
+                                {totalVisitors.toLocaleString()}
+                              </tspan>
+                              <tspan
+                                x={viewBox.cx}
+                                y={(viewBox.cy || 0) + 24}
+                                className="fill-muted-foreground"
+                              >
+                                Visitors
+                              </tspan>
+                            </text>
+                          );
+                        }
+                      }}
+                    />
+                  </Pie>
+                </PieChart>
+              </ChartContainer>
             </CardContent>
           </Card>
         </div>
