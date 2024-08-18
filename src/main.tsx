@@ -7,15 +7,16 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import Jchart from './pages/Jchart.tsx'
-import Login from './pages/login.tsx'
-import Dashboard from './pages/dashboard.tsx'
-import ErrorNotFound from './pages/notfound.tsx'
-
+import Jchart from './pages/Jchart.tsx';
+import Login from './pages/login.tsx';
+import Dashboard from './pages/dashboard.tsx';
+import ErrorNotFound from './pages/notfound.tsx';
+import SettingPage from './pages/setting.tsx';
+import Home from './pages/home.tsx';
 
 const router = createBrowserRouter([
   {
-    path: "/login",
+    path: "/",
     element: <Login/>,
   },
   {
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
   {
     path: "chart",
     element: <Jchart/>,
+  },
+  {
+    path: "setting", 
+    element: <SettingPage/>,
+  },
+  {
+    path: "home", 
+    element: <Home/>,
   },
   {
     path: "*",

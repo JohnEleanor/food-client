@@ -116,7 +116,7 @@ export function Home2() {
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
-            to="#"
+            to="/dashboard"
             className="text-foreground transition-colors hover:text-foreground"
           >
             หน้าหลัก
@@ -129,7 +129,7 @@ export function Home2() {
           </Link>
 
           <Link
-            to="#"
+            to="/setting"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
             ตั้งค่า
@@ -194,7 +194,9 @@ export function Home2() {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
+                <Link to="/">
                 <span className="text-muted-foreground hover:text-foreground">ตั้งค่า</span>
+                </Link>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Users className="mr-2 h-4 w-4" />
@@ -203,12 +205,15 @@ export function Home2() {
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <LogOut className="mr-2 h-4 w-4" />
+                <Link to="/">
                 <span className="text-muted-foreground hover:text-foreground">ออกจากระบบ</span>
+                </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       </div>
+      
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-2 md:grid-cols-2 md:gap-8 lg:grid-cols-2">
           <Card x-chunk="dashboard-01-chunk-0">
@@ -353,12 +358,7 @@ export function Home2() {
                   นี้คือรายการประวัติการกินอาหารของคุณที่จะบอกแคลอรี่ของอาหาร.
                 </CardDescription>
               </div>
-              {/* <Button asChild size="sm" className="ml-auto gap-1">
-                <Link to="#">
-                  View All
-                  <ArrowUpRight className="h-4 w-4" />
-                </Link>
-              </Button> */}
+             
             </CardHeader>
             <CardContent>
               <Table>
@@ -572,3 +572,14 @@ export function Home2() {
 }
 
 export default Home2;
+
+// import Nav from '../components/navbar.tsx';
+
+
+// export default function navbar() {
+//   return (
+//     <div className="flex min-h-screen w-full flex-col">
+//       <Nav />
+//     </div>
+//   )
+// }
