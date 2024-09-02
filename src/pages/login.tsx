@@ -1,40 +1,9 @@
-// import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-// import { Button } from "@/components/ui/button";
-// import { FaLine } from "react-icons/fa";
-// import { Link } from "react-router-dom";
-// import { LogIn  } from "lucide-react";
 
-// export default function login() {
-//   return (
-//     <Card className="mx-auto max-w-sm my-52 shadow-xl ">
-//       <CardHeader className="space-y-1">
-//         <CardTitle className="text-2xl font-bold flex items-center">
-//         <LogIn />
-//             <span className="ml-2 flex ">เข้าสู่ระบบ</span>
-//         </CardTitle>
-//         <CardDescription>กรุณาเข้าสู่ระบบเพื่อใช้ในการเก็บข้อมูล</CardDescription>
-//       </CardHeader>
-//       <CardContent>
-//       <Link to="/dashboard">
-//           <Button
-//             variant="destructive"
-//             className="shadow-lg"
-//           >
-//             <FaLine className="mr-2 h-4 w-4" /> Login ด้วย Line Account
-//           </Button>
-//         </Link>
-//       </CardContent>
-//     </Card>
-//   );
-// }
-
-// import Image from "next/image"
-// import Link from "next/link"
 import { FaLine } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-// import { Input } from "@/components/ui/input";
-// import { Label } from "@/components/ui/label";
+
+import { AspectRatio } from "@/components/ui/aspect-ratio"
 
 export default function login() {
   return (
@@ -48,27 +17,7 @@ export default function login() {
             </p>
           </div>
           <div className="grid gap-4">
-            {/* <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="m@example.com"
-                required
-              />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <Link
-                  to="/forgot-password"
-                  className="ml-auto inline-block text-sm underline"
-                >
-                  Forgot your password?
-                </Link>
-              </div>
-              <Input id="password" type="password" required />
-            </div> */}
+          
             <Link to="/dashboard">
               <Button className="bg-lime-600 w-full shadow-lg hover:bg-lime-500">
                 <FaLine className="mr-2 h-4 w-4" /> Login ด้วย Line Account
@@ -78,17 +27,19 @@ export default function login() {
               ฉันไม่มี Line Account
             </Button>
           </div>
-          {/* <div className="mt-4 text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link to="#" className="underline">
-              Sign up
-            </Link>
-          </div> */}
+      
         </div>
       </div>
-      <div className="hidden bg-muted lg:block">
+      <AspectRatio  className="hidden bg-muted lg:block">
+        <img
+          src="https://siamais.co.uk/wp-content/uploads/2023/07/pad-thai-dish-1024x771.jpeg"
+          alt="Photo by Drew Beamer"
+          className="h-full w-full object-cover"
+        />
+      </AspectRatio>
+      {/* <div className="hidden bg-muted lg:block">
         <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/6/12/3/FNM070116_Penne-with-Vodka-Sauce-and-Mini-Meatballs-recipe_s4x3.jpg.rend.hgtvcom.1280.1280.suffix/1465939620872.jpeg" width="1920" height="1080"/>
-      </div>
+      </div> */}
     </div>
   );
 }

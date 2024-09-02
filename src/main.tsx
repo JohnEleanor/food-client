@@ -9,10 +9,10 @@ import {
 
 import Jchart from './pages/Jchart.tsx';
 import Login from './pages/login.tsx';
-// import Dashboard from './pages/dashboard.tsx';
 import ErrorNotFound from './pages/notfound.tsx';
 import SettingPage from './pages/setting.tsx';
 import Home from './pages/home.tsx';
+import History from './pages/history.tsx';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +31,10 @@ const router = createBrowserRouter([
     path: "setting", 
     element: <SettingPage/>,
   },
- 
+  {
+    path: "history",
+    element: <History/>,
+  },
   {
     path: "*",
     element: <ErrorNotFound/>,
