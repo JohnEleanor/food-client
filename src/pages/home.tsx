@@ -60,8 +60,8 @@ export default function Home() {
 
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
-          <Card className="max-w-5xl" x-chunk="charts-01-chunk-6">
-            <CardHeader className="p-4 pb-0">
+          <Card className="max-w-5xl px-10 py-10 lg:px-1 py-1" x-chunk="charts-01-chunk-6">
+            <CardHeader className="p-4  pb-0">
               <CardTitle>เคลอรี่วันนี้</CardTitle>
               <CardDescription>
                 วันนี้คุณได้รับเคลอรี่ไปแล้ว
@@ -378,27 +378,27 @@ export default function Home() {
 
           <Card x-chunk="dashboard-01-chunk-5">
             <CardHeader>
-              <CardTitle>Recent Sales</CardTitle>
+              <CardTitle>รายการอาหารที่กินล่าสุด</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-8">
               <div className="flex items-center gap-4">
                 <Avatar className="hidden h-9 w-9 sm:flex">
-                  <AvatarImage src="/avatars/01.png" alt="Avatar" />
+                  <AvatarImage src="https://res.cloudinary.com/rainforest-cruises/images/c_fill,g_auto/f_auto,q_auto/w_1120,h_732,c_fill,g_auto/v1621045014/11-Best-Thai-Food-Dishes-Spicy-Salad/11-Best-Thai-Food-Dishes-Spicy-Salad-1120x732.jpg" alt="Avatar" />
                   <AvatarFallback>OM</AvatarFallback>
                 </Avatar>
                 <div className="grid gap-1">
                   <p className="text-sm font-medium leading-none">
-                    Olivia Martin
+                    ลาบ
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  {/* <p className="text-sm text-muted-foreground">
                     olivia.martin@email.com
-                  </p>
+                  </p> */}
                 </div>
-                <div className="ml-auto font-medium">+$1,999.00</div>
+                <div className="ml-auto font-medium">+ 1360.0 cal</div>
               </div>
               <div className="flex items-center gap-4">
                 <Avatar className="hidden h-9 w-9 sm:flex">
-                  <AvatarImage src="/avatars/02.png" alt="Avatar" />
+                  <AvatarImage src="https://media.cnn.com/api/v1/images/stellar/prod/151215113949-40-thai-food-21-ka-prao-kai-dao-1.jpg?q=w_1900,h_1096,x_0,y_0,c_fill" alt="Avatar" />
                   <AvatarFallback>JL</AvatarFallback>
                 </Avatar>
                 <div className="grid gap-1">
