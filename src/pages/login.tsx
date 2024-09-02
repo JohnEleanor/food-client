@@ -70,7 +70,7 @@ export default function login() {
               <Input id="password" type="password" required />
             </div> */}
             <Link to="/dashboard">
-              <Button variant="destructive" className="w-full shadow-lg">
+              <Button className="bg-lime-600 w-full shadow-lg hover:bg-lime-500">
                 <FaLine className="mr-2 h-4 w-4" /> Login ด้วย Line Account
               </Button>
             </Link>
@@ -87,8 +87,7 @@ export default function login() {
         </div>
       </div>
       <div className="hidden bg-muted lg:block">
-        <img src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg" />
-     
+        <img src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2016/6/12/3/FNM070116_Penne-with-Vodka-Sauce-and-Mini-Meatballs-recipe_s4x3.jpg.rend.hgtvcom.1280.1280.suffix/1465939620872.jpeg" width="1920" height="1080"/>
       </div>
     </div>
   );

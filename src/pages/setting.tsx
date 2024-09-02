@@ -9,6 +9,19 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { PersonStanding, Star  } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 // import { Checkbox } from "@/components/ui/checkbox";
 
 import { Input } from "@/components/ui/input";
@@ -50,10 +63,23 @@ export default function Settings() {
                     <Label className="text-foreground">ส่วนสูง</Label>
                     <Input
                       id="name"
-                      type="text"
+                      type="number"
                       className="w-full"
                       placeholder="160 Cm"
                     />
+                  </div>
+                  <div className="grid gap-3">
+                    <Alert>
+                      <PersonStanding className="h-4 w-4" />
+                      <AlertTitle>BMI</AlertTitle>
+                      {/* <Label className="text-foreground-muted">BMI</Label> */}
+                      <AlertDescription>
+                        <span>ค่า BMI ของคุณคือ </span>
+                        <Badge>
+                          22.2 <Star className="ml-1 h-4 w-4" />
+                        </Badge>
+                      </AlertDescription>
+                    </Alert>
                   </div>
                 </div>
               </CardContent>
@@ -65,27 +91,18 @@ export default function Settings() {
               <CardHeader>
                 <CardTitle>อายุ</CardTitle>
                 <CardDescription>
-                  หากมีการเปลี่ยนแปลงน้ำหนักหรือส่วนสูง กรุณาอัพเดตข้อมูล
+                  หากมีการเปลี่ยนแปลงอายุ กรุณาอัพเดตข้อมูล
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-6">
                   <div className="grid gap-3">
-                    <Label className="text-foreground">น้ำหนัก</Label>
+                    <Label className="text-foreground">อายุ</Label>
                     <Input
                       id="name"
                       type="text"
                       className="w-full"
-                      placeholder="50 Kg"
-                    />
-                  </div>
-                  <div className="grid gap-3">
-                    <Label className="text-foreground">ส่วนสูง</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="160 Cm"
+                      placeholder="18 ปี"
                     />
                   </div>
                 </div>
@@ -98,28 +115,13 @@ export default function Settings() {
               <CardHeader>
                 <CardTitle>โรคประจำตัว</CardTitle>
                 <CardDescription>
-                  หากมีการเปลี่ยนแปลงน้ำหนักหรือส่วนสูง กรุณาอัพเดตข้อมูล
+                  หากมีการเปลี่ยนแปลงของโรคประจำตัว กรุณาอัพเดตข้อมูล
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-6">
                   <div className="grid gap-3">
-                    <Label className="text-foreground">น้ำหนัก</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="50 Kg"
-                    />
-                  </div>
-                  <div className="grid gap-3">
-                    <Label className="text-foreground">ส่วนสูง</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="160 Cm"
-                    />
+                    <Textarea placeholder="ระบุโรคประจำตัวของคุณหากมี" />
                   </div>
                 </div>
               </CardContent>
@@ -131,29 +133,12 @@ export default function Settings() {
               <CardHeader>
                 <CardTitle>การเเพ้อาหาร</CardTitle>
                 <CardDescription>
-                  หากมีการเปลี่ยนแปลงน้ำหนักหรือส่วนสูง กรุณาอัพเดตข้อมูล
+                  หากมีการเปลี่ยนแปลงการเเพ้อาหาร กรุณาอัพเดตข้อมูล
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-6">
-                  <div className="grid gap-3">
-                    <Label className="text-foreground">น้ำหนัก</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="50 Kg"
-                    />
-                  </div>
-                  <div className="grid gap-3">
-                    <Label className="text-foreground">ส่วนสูง</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="160 Cm"
-                    />
-                  </div>
+                <Textarea placeholder="ระบุการเเพ้อาหารของคุณหากมี" />
                 </div>
               </CardContent>
               <CardFooter className="border-t px-6 py-4">
@@ -164,28 +149,28 @@ export default function Settings() {
               <CardHeader>
                 <CardTitle>เป้าหมาย</CardTitle>
                 <CardDescription>
-                  หากมีการเปลี่ยนแปลงน้ำหนักหรือส่วนสูง กรุณาอัพเดตข้อมูล
+                  หากมีการเปลี่ยนแปลงเป้าหมายในการกิน กรุณาอัพเดตข้อมูล
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="grid gap-6">
                   <div className="grid gap-3">
-                    <Label className="text-foreground">น้ำหนัก</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="50 Kg"
-                    />
-                  </div>
-                  <div className="grid gap-3">
-                    <Label className="text-foreground">ส่วนสูง</Label>
-                    <Input
-                      id="name"
-                      type="text"
-                      className="w-full"
-                      placeholder="160 Cm"
-                    />
+                    <Label className="text-foreground">เป้าหมายในการกิน</Label>
+                    <Select>
+                      <SelectTrigger className="w-[180px]">
+                        <SelectValue placeholder="เลือกเป้าหมายในการกิน" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          <SelectLabel>เลือกเป้าหมายในการกิน</SelectLabel>
+                          <SelectItem value="apple">เพิ่มน้ำหนัก</SelectItem>
+                          <SelectItem value="banana">ลดน้ำหนัก</SelectItem>
+                          <SelectItem value="blueberry">คุมน้ำหนัก</SelectItem>
+                          {/* <SelectItem value="grapes">Grapes</SelectItem>
+                          <SelectItem value="pineapple">Pineapple</SelectItem> */}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </CardContent>

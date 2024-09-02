@@ -17,7 +17,7 @@ export default function Notfound() {
               home page.{" "}
             </p>
             <Button>
-                <Link to="login" >Home Page</Link>
+                <Link to="/" >Home Page</Link>
             </Button>
           </div>
         </div>

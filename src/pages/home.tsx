@@ -3,6 +3,8 @@ import Navbar from "./navbar.tsx";
 /**
  * shadcnUI
  */
+import { Separator } from "@/components/ui/separator"
+// import { Button } from "@/components/ui/button";
 import {
   ChartContainer,
   // ChartTooltip,
@@ -18,10 +20,10 @@ import {
   LabelList,
   // Line,
   // LineChart,
-  PolarAngleAxis,
-  RadialBar,
-  RadialBarChart,
-  // Rectangle,
+  // PolarAngleAxis,
+  // RadialBar,
+  // RadialBarChart,
+  Rectangle,
   // ReferenceLine,
   XAxis,
   YAxis,
@@ -42,6 +44,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
@@ -56,207 +59,195 @@ export default function Home() {
       <Navbar />
 
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
-        <div className="grid justify-items-center gap-2 md:grid-cols-2 md:gap-8 lg:grid-cols-2">
-        <Card className="max-w-sm w-full " x-chunk="charts-01-chunk-2">
-            <CardContent className="flex gap-4 p-4">
-              <div className="grid items-center gap-2">
-                <div className="grid flex-1 auto-rows-min gap-0.5">
-                  <div className="text-sm text-muted-foreground">Move</div>
-                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
-                    562/600
-                    <span className="text-sm font-normal text-muted-foreground">
-                      kcal
-                    </span>
-                  </div>
-                </div>
-                <div className="grid flex-1 auto-rows-min gap-0.5">
-                  <div className="text-sm text-muted-foreground">Exercise</div>
-                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
-                    73/120
-                    <span className="text-sm font-normal text-muted-foreground">
-                      min
-                    </span>
-                  </div>
-                </div>
-                <div className="grid flex-1 auto-rows-min gap-0.5">
-                  <div className="text-sm text-muted-foreground">Stand</div>
-                  <div className="flex items-baseline gap-1 text-xl font-bold tabular-nums leading-none">
-                    8/12
-                    <span className="text-sm font-normal text-muted-foreground">
-                      hr
-                    </span>
-                  </div>
-                </div>
+        <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+          <Card className="max-w-5xl" x-chunk="charts-01-chunk-6">
+            <CardHeader className="p-4 pb-0">
+              <CardTitle>เคลอรี่วันนี้</CardTitle>
+              <CardDescription>
+                วันนี้คุณได้รับเคลอรี่ไปแล้ว
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex flex-row items-baseline gap-4 p-4 pt-2">
+              <div className="flex items-baseline gap-2 text-3xl font-bold tabular-nums leading-none">
+                1,254
+                <span className="text-sm font-normal text-muted-foreground">
+                  kcal
+                </span>
               </div>
               <ChartContainer
                 config={{
-                  move: {
-                    label: "Move",
+                  calories: {
+                    label: "Calories",
                     color: "hsl(var(--chart-1))",
                   },
-                  exercise: {
-                    label: "Exercise",
-                    color: "hsl(var(--chart-2))",
-                  },
-                  stand: {
-                    label: "Stand",
-                    color: "hsl(var(--chart-3))",
-                  },
                 }}
-                className="mx-auto aspect-square w-full max-w-[80%]"
+                className="ml-auto w-[64px]"
               >
-                <RadialBarChart
+                <BarChart
+                  accessibilityLayer
                   margin={{
-                    left: -10,
-                    right: -10,
-                    top: -10,
-                    bottom: -10,
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
                   }}
                   data={[
                     {
-                      activity: "stand",
-                      value: (8 / 12) * 100,
-                      fill: "var(--color-stand)",
+                      date: "2024-01-01",
+                      calories: 354,
                     },
                     {
-                      activity: "exercise",
-                      value: (46 / 60) * 100,
-                      fill: "var(--color-exercise)",
+                      date: "2024-01-02",
+                      calories: 514,
                     },
                     {
-                      activity: "move",
-                      value: (245 / 360) * 100,
-                      fill: "var(--color-move)",
+                      date: "2024-01-03",
+                      calories: 345,
+                    },
+                    {
+                      date: "2024-01-04",
+                      calories: 734,
+                    },
+                    {
+                      date: "2024-01-05",
+                      calories: 645,
+                    },
+                    {
+                      date: "2024-01-06",
+                      calories: 456,
+                    },
+                    {
+                      date: "2024-01-07",
+                      calories: 345,
                     },
                   ]}
-                  innerRadius="20%"
-                  barSize={24}
-                  startAngle={90}
-                  endAngle={450}
                 >
-                  <PolarAngleAxis
-                    type="number"
-                    domain={[0, 100]}
-                    dataKey="value"
-                    tick={false}
+                  <Bar
+                    dataKey="calories"
+                    fill="var(--color-calories)"
+                    radius={2}
+                    fillOpacity={0.2}
+                    activeIndex={6}
+                    activeBar={<Rectangle fillOpacity={0.8} />}
                   />
-                  <RadialBar dataKey="value" background cornerRadius={5} />
-                </RadialBarChart>
+                  <XAxis
+                    dataKey="date"
+                    tickLine={false}
+                    axisLine={false}
+                    tickMargin={4}
+                    hide
+                  />
+                </BarChart>
               </ChartContainer>
             </CardContent>
           </Card>
-          <Card className="max-w-sm" x-chunk="charts-01-chunk-2">
-            <CardHeader>
-              <CardTitle>Progress</CardTitle>
-              <CardDescription>
-                You're average more steps a day this year than last year.
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="grid gap-4">
-              <div className="grid auto-rows-min gap-2">
+         
+          <Card className="max-w-5xl" x-chunk="charts-01-chunk-4">
+          <CardContent className="flex gap-4 p-4 pb-2">
+            <ChartContainer
+              config={{
+                move: {
+                  label: "โปรตีน",
+                  color: "hsl(var(--chart-1))",
+                },
+                stand: {
+                  label: "Stand",
+                  color: "hsl(var(--chart-2))",
+                },
+                exercise: {
+                  label: "Exercise",
+                  color: "hsl(var(--chart-3))",
+                },
+              }}
+              className="h-[140px] w-full"
+            >
+              <BarChart
+                margin={{
+                  left: 10,
+                  right: 0,
+                  top: 0,
+                  bottom: 10,
+                }}
+                data={[
+                  {
+                    activity: "โปรตีน",
+                    value: (8 / 12) * 100,
+                    label: "8/12 กรัม",
+                    fill: "var(--color-stand)",
+                  },
+                  {
+                    activity: "คาร์โบไฮเดท",
+                    value: (46 / 60) * 100,
+                    label: "46/60 กรัม",
+                    fill: "var(--color-exercise)",
+                  },
+                  {
+                    activity: "ไขมัน",
+                    value: (245 / 360) * 100,
+                    label: "245/360 กรัม",
+                    fill: "var(--color-move)",
+                  },
+                 
+                ]}
+                layout="vertical"
+                barSize={26}
+                barGap={2}
+              >
+                <XAxis type="number" dataKey="value" hide />
+                <YAxis
+                  dataKey="activity"
+                  type="category"
+                  tickLine={false}
+                  tickMargin={1}
+                  axisLine={false}
+                  className="capitalize"
+                />
+                <Bar dataKey="value" radius={8}>
+                  <LabelList
+                    position="insideLeft"
+                    dataKey="label"
+                    fill="white"
+                    offset={8}
+                    fontSize={12}
+                  />
+                </Bar>
+              </BarChart>
+            </ChartContainer>
+          </CardContent>
+          <CardFooter className="flex flex-row border-t p-4">
+            <div className="flex w-full items-center gap-2">
+              <div className="grid flex-1 auto-rows-min gap-0.5">
+                <div className="text-xs text-muted-foreground">โปรตีน</div>
                 <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                  12,453
+                  562
                   <span className="text-sm font-normal text-muted-foreground">
-                    steps/day
+                    กรัม
                   </span>
                 </div>
-                <ChartContainer
-                  config={{
-                    steps: {
-                      label: "Steps",
-                      color: "hsl(var(--chart-1))",
-                    },
-                  }}
-                  className="aspect-auto h-[32px] w-full"
-                >
-                  <BarChart
-                    accessibilityLayer
-                    layout="vertical"
-                    margin={{
-                      left: 0,
-                      top: 0,
-                      right: 0,
-                      bottom: 0,
-                    }}
-                    data={[
-                      {
-                        date: "2024",
-                        steps: 12435,
-                      },
-                    ]}
-                  >
-                    <Bar
-                      dataKey="steps"
-                      fill="var(--color-steps)"
-                      radius={4}
-                      barSize={32}
-                    >
-                      <LabelList
-                        position="insideLeft"
-                        dataKey="date"
-                        offset={8}
-                        fontSize={12}
-                        fill="white"
-                      />
-                    </Bar>
-                    <YAxis dataKey="date" type="category" tickCount={1} hide />
-                    <XAxis dataKey="steps" type="number" hide />
-                  </BarChart>
-                </ChartContainer>
               </div>
-              <div className="grid auto-rows-min gap-2">
+              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+              <div className="grid flex-1 auto-rows-min gap-0.5">
+                <div className="text-xs text-muted-foreground">คาร์โบไฮเดท</div>
                 <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
-                  10,103
+                  73
                   <span className="text-sm font-normal text-muted-foreground">
-                    steps/day
+                  กรัม
                   </span>
                 </div>
-                <ChartContainer
-                  config={{
-                    steps: {
-                      label: "Steps",
-                      color: "hsl(var(--muted))",
-                    },
-                  }}
-                  className="aspect-auto h-[32px] w-full"
-                >
-                  <BarChart
-                    accessibilityLayer
-                    layout="vertical"
-                    margin={{
-                      left: 0,
-                      top: 0,
-                      right: 0,
-                      bottom: 0,
-                    }}
-                    data={[
-                      {
-                        date: "2023",
-                        steps: 10103,
-                      },
-                    ]}
-                  >
-                    <Bar
-                      dataKey="steps"
-                      fill="var(--color-steps)"
-                      radius={4}
-                      barSize={32}
-                    >
-                      <LabelList
-                        position="insideLeft"
-                        dataKey="date"
-                        offset={8}
-                        fontSize={12}
-                        fill="hsl(var(--muted-foreground))"
-                      />
-                    </Bar>
-                    <YAxis dataKey="date" type="category" tickCount={1} hide />
-                    <XAxis dataKey="steps" type="number" hide />
-                  </BarChart>
-                </ChartContainer>
               </div>
-            </CardContent>
-          </Card>
+              <Separator orientation="vertical" className="mx-2 h-10 w-px" />
+              <div className="grid flex-1 auto-rows-min gap-0.5">
+                <div className="text-xs text-muted-foreground">ไขมัน</div>
+                <div className="flex items-baseline gap-1 text-2xl font-bold tabular-nums leading-none">
+                  14
+                  <span className="text-sm font-normal text-muted-foreground">
+                  กรัม
+                  </span>
+                </div>
+              </div>
+            </div>
+          </CardFooter>
+        </Card>
         </div>
         <div className="grid gap-4 md:gap-8 lg:grid-cols-2 xl:grid-cols-3">
           <Card className="xl:col-span-2" x-chunk="dashboard-01-chunk-0">
@@ -282,7 +273,7 @@ export default function Home() {
                 <TableBody>
                   <TableRow>
                     <TableCell>
-                      <div className="font-medium">Liam Johnson</div>
+                      <div className="font-medium">ข้าวผัด</div>
                       <div className="hidden text-sm text-muted-foreground md:inline">
                         liam@example.com
                       </div>
@@ -298,11 +289,11 @@ export default function Home() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-23
                     </TableCell>
-                    <TableCell className="text-right">$250.00</TableCell>
+                    <TableCell className="text-right">250 kg/cal</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
-                      <div className="font-medium">Olivia Smith</div>
+                      <div className="font-medium">เบอเกอร์</div>
                       <div className="hidden text-sm text-muted-foreground md:inline">
                         olivia@example.com
                       </div>
@@ -318,11 +309,11 @@ export default function Home() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-24
                     </TableCell>
-                    <TableCell className="text-right">$150.00</TableCell>
+                    <TableCell className="text-right">250 kg/cal</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
-                      <div className="font-medium">Noah Williams</div>
+                      <div className="font-medium">หมูปิ้ง</div>
                       <div className="hidden text-sm text-muted-foreground md:inline">
                         noah@example.com
                       </div>
@@ -338,11 +329,11 @@ export default function Home() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-25
                     </TableCell>
-                    <TableCell className="text-right">$350.00</TableCell>
+                    <TableCell className="text-right">250 kg/cal</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
-                      <div className="font-medium">Emma Brown</div>
+                      <div className="font-medium">ไก่ทอด</div>
                       <div className="hidden text-sm text-muted-foreground md:inline">
                         emma@example.com
                       </div>
@@ -358,11 +349,11 @@ export default function Home() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-26
                     </TableCell>
-                    <TableCell className="text-right">$450.00</TableCell>
+                    <TableCell className="text-right">250 kg/cal</TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell>
-                      <div className="font-medium">Liam Johnson</div>
+                      <div className="font-medium">หมูทอด</div>
                       <div className="hidden text-sm text-muted-foreground md:inline">
                         liam@example.com
                       </div>
@@ -378,7 +369,7 @@ export default function Home() {
                     <TableCell className="hidden md:table-cell lg:hidden xl:table-column">
                       2023-06-27
                     </TableCell>
-                    <TableCell className="text-right">$550.00</TableCell>
+                    <TableCell className="text-right">250 kg/cal</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

@@ -11,7 +11,7 @@ import {
     Utensils,
     Users,
     LogOut,
-    Settings,
+    // Settings,
     User,
   } from "lucide-react";
 
@@ -63,16 +63,16 @@ export default function navbar() {
                 <Utensils className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
-              <Link to="#" className="hover:text-foreground">
+              <Link to="/dashboard" className="hover:text-foreground">
                 หน้าหลัก
               </Link>
               <Link
-                to="#"
+                to="/history"
                 className="text-muted-foreground hover:text-foreground"
               >
                 ประวัติการกิน
               </Link>
-              <Link to="setting" className="text-muted-foreground hover:text-foreground" >
+              <Link to="/setting" className="text-muted-foreground hover:text-foreground" >
                 ตั้งค่า
               </Link>
             </nav>
@@ -93,16 +93,20 @@ export default function navbar() {
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
                 <User className="mr-2 h-4 w-4" />
-                <span className="text-foreground">บัญชีของฉัน</span>
+                <Link to="/setting">
+                <span className="text-foreground">ตั้งค่าบัญชีของฉัน</span>
+                </Link>
               </DropdownMenuItem>
               {/* <DropdownMenuLabel>บัญชีของฉัน</DropdownMenuLabel> */}
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              {/* <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
-                <span className="text-muted-foreground hover:text-foreground">
-                  ตั้งค่า
-                </span>
-              </DropdownMenuItem>
+                <Link to="/setting">
+                  <span className="text-muted-foreground hover:text-foreground">
+                    ตั้งค่า
+                  </span>
+                </Link>
+              </DropdownMenuItem> */}
               <DropdownMenuItem>
                 <Users className="mr-2 h-4 w-4" />
                 <span className="text-muted-foreground hover:text-foreground">
