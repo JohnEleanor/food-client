@@ -1,17 +1,15 @@
 
 import { Link } from "react-router-dom";
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuLabel } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ModeToggle } from "../components/theme-switcher";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Button } from "@/components/ui/button";
 import {
-    CircleUser,
     Menu,
     Utensils,
     Users,
     LogOut,
-    // Settings,
     User,
   } from "lucide-react";
 
@@ -23,6 +21,7 @@ export default function navbar() {
             <Utensils className="h-6 w-6" />
             <span className="sr-only">Acme Inc</span>
           </Link>
+         
           <Link
             to="/dashboard"
             className="text-foreground transition-colors hover:text-foreground"
@@ -86,39 +85,43 @@ export default function navbar() {
             </ThemeProvider>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
-                <CircleUser className="h-5 w-5" />
+                <img src="https://www.melivecode.com/users/3.png" className="h-9 w-9" />
                 <span className="sr-only">Toggle user menu</span>
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="w-48">
+            <DropdownMenuLabel>บัญชีของฉัน</DropdownMenuLabel>
+            <div className="mx-2 mb-2 text-muted-foreground text-xs">test@test.com</div>
+            
+            <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <User className="mr-2 h-4 w-4" />
-                <Link to="/setting">
-                <span className="text-foreground">ตั้งค่าบัญชีของฉัน</span>
-                </Link>
+                <div className="flex text-muted-foreground hover:text-foreground">
+                  <User className="mr-2 h-4 w-4" />
+                  
+                  <Link to="/setting">
+                  <span >ตั้งค่าบัญชีของฉัน</span>
+                  </Link>
+                </div>
+                
               </DropdownMenuItem>
-              {/* <DropdownMenuLabel>บัญชีของฉัน</DropdownMenuLabel> */}
               <DropdownMenuSeparator />
-              {/* <DropdownMenuItem>
-                <Settings className="mr-2 h-4 w-4" />
-                <Link to="/setting">
-                  <span className="text-muted-foreground hover:text-foreground">
-                    ตั้งค่า
+
+              <DropdownMenuItem>
+                <div className="flex text-muted-foreground hover:text-foreground">
+                  <Users className="mr-2 h-4 w-4" />
+                  <span>
+                    แจ้งปัญหา
                   </span>
-                </Link>
-              </DropdownMenuItem> */}
-              <DropdownMenuItem>
-                <Users className="mr-2 h-4 w-4" />
-                <span className="text-muted-foreground hover:text-foreground">
-                  แจ้งปัญหา
-                </span>
+                </div>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
-                <Link to="/" className="text-muted-foreground hover:text-foreground">
-                  ออกจากระบบ
-                </Link>
+                <div className="flex text-muted-foreground hover:text-foreground">
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <Link to="/" className="text-muted-foreground hover:text-foreground">
+                    ออกจากระบบ
+                  </Link>
+                </div>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
