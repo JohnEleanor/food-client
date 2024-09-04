@@ -1,5 +1,5 @@
 
-import { Link } from "react-router-dom";
+import { Link, useLocation  } from "react-router-dom";
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuLabel } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { ModeToggle } from "../components/theme-switcher";
@@ -13,8 +13,15 @@ import {
     User,
   } from "lucide-react";
 
-export default function navbar() {
+export default function Navbar() {
+  const location = useLocation(); // ใช้ useLocation เพื่อดึงข้อมูลเส้นทางปัจจุบัน
+  console.log(typeof(location.pathname));
+ // ฟังก์ชันช่วยเหลือเพื่อกำหนดคลาสที่ตรงกับเส้นทางปัจจุบัน
+//  const getLinkClassName = (path: string) =>
+//   location.pathname === path ? "text-foreground font-bold" : "text-muted-foreground";
+ 
   return (
+    
       <div className="sticky z-50 top-0 flex h-16 whitespace-nowrap items-center items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link to="/dashboard" className="flex items-center gap-2 text-lg md:text-base">
@@ -24,20 +31,26 @@ export default function navbar() {
          
           <Link
             to="/dashboard"
-            className="text-foreground transition-colors hover:text-foreground"
+            className={`transition-colors hover:text-foreground ${
+              location.pathname === '/dashboard' ? 'text-foreground font-bold' : 'text-muted-foreground'
+            }`}
           >
             หน้าหลัก
           </Link>
           <Link
             to="/history"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className={`transition-colors hover:text-foreground ${
+              location.pathname === '/history' ? 'text-foreground font-bold' : 'text-muted-foreground'
+            }`}
           >
             ประวัติการกิน
           </Link>
 
           <Link
             to="/setting"
-            className="text-muted-foreground transition-colors hover:text-foreground"
+            className={`transition-colors hover:text-foreground ${
+              location.pathname === '/setting' ? 'text-foreground font-bold' : 'text-muted-foreground'
+            }`}
           >
             ตั้งค่า
           </Link>
@@ -62,16 +75,21 @@ export default function navbar() {
                 <Utensils className="h-6 w-6" />
                 <span className="sr-only">Acme Inc</span>
               </Link>
-              <Link to="/dashboard" className="hover:text-foreground">
+              <Link to="/dashboard" className={`transition-colors ${
+          location.pathname == '/dashboard' ? 'text-foreground font-bold' : 'text-muted-foreground'
+        }`}>
                 หน้าหลัก
               </Link>
               <Link
                 to="/history"
-                className="text-muted-foreground hover:text-foreground"
+                className={`transition-colors ${location.pathname == '/history' ? 'text-foreground font-bold' : 'text-muted-foreground'
+                }`}
               >
                 ประวัติการกิน
               </Link>
-              <Link to="/setting" className="text-muted-foreground hover:text-foreground" >
+              <Link to="/setting" className={`transition-colors ${
+          location.pathname == '/setting' ? 'text-foreground font-bold' : 'text-muted-foreground'
+        }`}>
                 ตั้งค่า
               </Link>
             </nav>
@@ -99,7 +117,7 @@ export default function navbar() {
                   <User className="mr-2 h-4 w-4" />
                   
                   <Link to="/setting">
-                  <span >ตั้งค่าบัญชีของฉัน</span>
+                  <span>ตั้งค่าบัญชีของฉัน</span>
                   </Link>
                 </div>
                 
