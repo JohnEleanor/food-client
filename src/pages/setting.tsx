@@ -90,9 +90,12 @@ const data = [
   },
 ];
 
-console.log(data);
-
 export default function Settings() {
+
+  // const [cal_weight, setWeight] = React.useState("");
+  // const [cal_height, setHeight] = React.useState("");
+ 
+ 
   const weight = 50;
   const [goal, setGoal] = React.useState(weight);
 

@@ -13,6 +13,7 @@ import ErrorNotFound from './pages/notfound.tsx';
 import SettingPage from './pages/setting.tsx';
 import Home from './pages/home.tsx';
 import History from './pages/history.tsx';
+import Register from './pages/validateuser.tsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "history",
     element: <History/>,
+  },
+  {
+    path: "register",
+    element: <Register/>,
   },
   {
     path: "*",
