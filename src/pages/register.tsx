@@ -11,13 +11,11 @@ import { Label } from "@/components/ui/label";
 import { Utensils, User } from "lucide-react";
 import {
   Tabs,
-  // TabsContent,
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
 
 import * as React from "react";
-// import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
@@ -32,9 +30,11 @@ export default function Register() {
   const [date, setDate] = React.useState<Date>();
 
   return (
-    <div className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
+  
+    <div className="flex flex-2 flex-col gap-4 p-4 md:gap-8 md:p-8">
       <nav className="flex-col self-center gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Utensils className="h-6 w-6" />
+        
       </nav>
       <Card className="mx-auto max-w-xl">
         <CardHeader>

@@ -34,7 +34,7 @@ export default function Navbar() {
           to="/dashboard"
           className={`transition-colors hover:text-foreground ${
             location.pathname === "/dashboard"
-              ? "text-foreground font-bold"
+              ? "text-foreground"
               : "text-muted-foreground"
           }`}
         >
@@ -44,7 +44,7 @@ export default function Navbar() {
           to="/history"
           className={`transition-colors hover:text-foreground ${
             location.pathname === "/history"
-              ? "text-foreground font-bold"
+              ? "text-foreground"
               : "text-muted-foreground"
           }`}
         >
@@ -55,7 +55,7 @@ export default function Navbar() {
           to="/setting"
           className={`transition-colors hover:text-foreground ${
             location.pathname === "/setting"
-              ? "text-foreground font-bold"
+              ? "text-foreground"
               : "text-muted-foreground"
           }`}
         >

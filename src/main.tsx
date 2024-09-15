@@ -13,7 +13,7 @@ import ErrorNotFound from './pages/notfound.tsx';
 import SettingPage from './pages/setting.tsx';
 import Home from './pages/home.tsx';
 import History from './pages/history.tsx';
-import Register from './pages/validateuser.tsx';
+import Register from './pages/register.tsx';
 
 const router = createBrowserRouter([
   {
